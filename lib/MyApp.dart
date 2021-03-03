@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_battle/pages/MyHomePage.dart';
+import 'package:the_battle/pages/AllCharactersPage.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'THE BATTLE'),
+      home: AllCharactersPage(title: 'THE BATTLE'),
     );
   }
 }

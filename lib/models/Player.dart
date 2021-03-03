@@ -10,7 +10,7 @@ class Player {
   Team team;
 
   Player(this.uuid, this.firstname, this.name, this.email, this.sex) {
-    if(gender != 1 && gender != 2) {
+    if(sex != 1 && sex != 2) {
       throw new Exception('Le sexe du personnage peut être soit male (1) ou femelle (2)');
     }
   }

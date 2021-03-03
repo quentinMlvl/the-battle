@@ -7,7 +7,7 @@ class Skill {
   static final List kinds = [STRENGTH, CLEVERNESS, SPEED, INTELLIGENCE];
 
   String kind;
-  Int value; //min 0 / max 5
+  int value; //min 0 / max 5
 
   Skill(String kind, int value) {
     if (kinds.contains(kind)) {
