@@ -10,26 +10,26 @@ class AllCharactersPage extends StatefulWidget {
   final String title;
 
   @override
-  _AllCharactersPage createState() => _AllCharactersPage();
+  _AllCharactersPageState createState() => _AllCharactersPageState();
 }
 
-class _AllCharactersPage extends State<AllCharactersPage> {
+class _AllCharactersPageState extends State<AllCharactersPage> {
   List<Character> _characters = characters;
   Character _selectedCharacter;
 
   void _onCharacterSelect(Character character) {
-    setState() {
+    setState(() {
       this._selectedCharacter = character;
-    }
+    });
   }
 
   Widget _getCharacterDetails() {
-    // if (this._selectedCharacter != null) {
-    return CharacterDetails(
-      character: this._characters[0],
-    );
-    // } else
-    //   return Container();
+    if (this._selectedCharacter != null) {
+      return CharacterDetails(
+        character: this._selectedCharacter,
+      );
+    } else
+      return Container();
   }
 
   @override

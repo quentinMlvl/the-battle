@@ -11,10 +11,15 @@ class CharacterDetails extends StatelessWidget {
     return Card(
       color: Colors.red[100],
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Column(
             children: [
-              Text(character.name),
+              Text(
+                character.name,
+                style: TextStyle(
+                    fontFamily: 'Knewave', fontSize: 20, color: Colors.white),
+              ),
               Image(
                 image: AssetImage(character.imagePath()),
                 width: 50,
@@ -25,30 +30,54 @@ class CharacterDetails extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text(character.strength.kind +
-                      " : " +
-                      character.strength.value.toString()),
+                  Text(
+                    character.strength.kind +
+                        " : " +
+                        character.strength.value.toString(),
+                    style: TextStyle(
+                        fontFamily: 'Knewave',
+                        fontSize: 15,
+                        color: Colors.white),
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  Text(character.speed.kind +
-                      " : " +
-                      character.speed.value.toString()),
+                  Text(
+                    character.speed.kind +
+                        " : " +
+                        character.speed.value.toString(),
+                    style: TextStyle(
+                        fontFamily: 'Knewave',
+                        fontSize: 15,
+                        color: Colors.white),
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  Text(character.cleverness.kind +
-                      " : " +
-                      character.cleverness.value.toString()),
+                  Text(
+                    character.cleverness.kind +
+                        " : " +
+                        character.cleverness.value.toString(),
+                    style: TextStyle(
+                        fontFamily: 'Knewave',
+                        fontSize: 15,
+                        color: Colors.white),
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  Text(character.intelligence.kind +
-                      " : " +
-                      character.intelligence.value.toString()),
+                  Text(
+                    character.intelligence.kind +
+                        " : " +
+                        character.intelligence.value.toString(),
+                    style: TextStyle(
+                        fontFamily: 'Knewave',
+                        fontSize: 15,
+                        color: Colors.white),
+                  ),
                 ],
               ),
             ],
