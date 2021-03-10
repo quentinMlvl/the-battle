@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:the_battle/models/Character.dart';
 
-class CharacterPreview extends StatelessWidget {
+class CharacterPreview extends StatefulWidget {
   const CharacterPreview({Key key, this.character}) : super(key: key);
 
   final Character character;
+
+  @override
+  _CharacterPreviewState createState() => _CharacterPreviewState();
+}
+
+class _CharacterPreviewState extends State<CharacterPreview> {
+  _CharacterPreviewState();
+  bool _selected = false;
 
   Color _getColor() {
     // if (this.character.autoSelected) {
@@ -13,30 +21,34 @@ class CharacterPreview extends StatelessWidget {
     //     this.character.autoSelected == false) {
     //   return Colors.green[600];
     // } else {
-    return (false) ? Colors.red[300] : Colors.red[400];
+    return (_selected) ? Colors.green[300] : Colors.red[400];
     // }
   }
 
   // bool _getEnabled(){
-  //   return !(this.character.autoSelected ||
-  //     this.character.selected);
+  //   return !(this.widget.character.autoSelected ||
+  //     this.widget.character.selected);
   // }
 
-  // void _onTap() {
-  //   this.onSelected(this.character):
-  // }
+  void _onTap() {
+    setState(() {
+      _selected = !_selected;
+    });
+  }
 
-  @override
   Widget build(BuildContext context) {
     return Card(
       color: _getColor(),
       child: ListTile(
+        onTap: () {
+          _onTap();
+        },
         leading: Image(
-          image: AssetImage(character.imagePath()),
+          image: AssetImage(widget.character.imagePath()),
           width: 200,
         ),
         title: Text(
-          character.name,
+          widget.character.name,
           style: TextStyle(
               fontFamily: 'Knewave', fontSize: 20, color: Colors.white),
         ),
