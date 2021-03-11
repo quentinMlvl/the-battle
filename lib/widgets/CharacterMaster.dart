@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_battle/models/Character.dart';
 import 'package:the_battle/widgets/CharacterPreview.dart';
-// import 'package:the_battle/data/characters.dart';
 
 class CharacterMaster extends StatefulWidget {
   const CharacterMaster({Key key, this.characters, this.onSelected})

@@ -19,14 +19,14 @@ class _AllCharactersPageState extends State<AllCharactersPage> {
 
   void _onCharacterSelect(Character character) {
     setState(() {
-      this._selectedCharacter = character;
+      _selectedCharacter = character;
     });
   }
 
   Widget _getCharacterDetails() {
-    if (this._selectedCharacter != null) {
+    if (_selectedCharacter != null) {
       return CharacterDetails(
-        character: this._selectedCharacter,
+        character: _selectedCharacter,
       );
     } else
       return Container();
@@ -52,7 +52,7 @@ class _AllCharactersPageState extends State<AllCharactersPage> {
           ),
           Expanded(
             child: CharacterMaster(
-                characters: _characters, onSelected: this._onCharacterSelect),
+                characters: _characters, onSelected: _onCharacterSelect),
           ),
         ],
       )),

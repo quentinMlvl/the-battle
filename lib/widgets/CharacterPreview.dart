@@ -7,8 +7,8 @@ class CharacterPreview extends StatefulWidget {
       : super(key: key);
 
   final Character character;
-  final bool visited;
   final Function onSelected;
+  final bool visited;
 
   @override
   _CharacterPreviewState createState() => _CharacterPreviewState();
@@ -18,23 +18,23 @@ class _CharacterPreviewState extends State<CharacterPreview> {
   bool _selected = false;
 
   Color _getColor() {
-    // if (this.character.autoSelected) {
+    // if (character.autoSelected) {
     //   return Colors.green[800];
-    // } else if (this.character.selected &&
-    //     this.character.autoSelected == false) {
+    // } else if (character.selected &&
+    //     character.autoSelected == false) {
     //   return Colors.green[600];
     // } else {
-    return (_selected) ? Colors.green[300] : Colors.red[400];
+    return (widget.visited) ? Colors.green[300] : Colors.red[400];
     // }
   }
 
   // bool _getEnabled(){
-  //   return !(this.widget.character.autoSelected ||
-  //     this.widget.character.selected);
+  //   return !(widget.character.autoSelected ||
+  //     widget.character.selected);
   // }
 
   void _onTap() {
-    this.widget.onSelected(this.widget.character);
+    widget.onSelected(widget.character);
   }
 
   @override
