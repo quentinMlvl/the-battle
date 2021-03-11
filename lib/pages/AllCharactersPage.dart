@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:the_battle/models/Character.dart';
+import 'package:the_battle/models/Player.dart';
+import 'package:the_battle/pages/TeamPage.dart';
 import 'package:the_battle/widgets/CharacterMaster.dart';
 import 'package:the_battle/widgets/CharacterDetails.dart';
 import 'package:the_battle/data/characters.dart';
 
 class AllCharactersPage extends StatefulWidget {
-  AllCharactersPage({Key key, this.title}) : super(key: key);
+  AllCharactersPage({Key key, this.title, this.player}) : super(key: key);
 
   final String title;
+  final Player player;
 
   @override
   _AllCharactersPageState createState() => _AllCharactersPageState();
@@ -23,10 +26,21 @@ class _AllCharactersPageState extends State<AllCharactersPage> {
     });
   }
 
+  void _onCharacterAdded(Character character) {
+    if (widget.player.team.indexOf(character) != 1) {
+      print('Déjà dans la team');
+    } else {
+      // Navigator.pushReplacementNamed(context, TeamPage.routeName,
+      //     arguments: character);
+    }
+  }
+
   Widget _getCharacterDetails() {
     if (_selectedCharacter != null) {
       return CharacterDetails(
         character: _selectedCharacter,
+        player: widget.player,
+        onCharacterAdded: _onCharacterAdded,
       );
     } else
       return Container();

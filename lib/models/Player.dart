@@ -1,3 +1,4 @@
+import 'package:the_battle/models/Character.dart';
 import 'package:the_battle/models/Team.dart';
 
 class Player {
@@ -14,5 +15,6 @@ class Player {
       throw new Exception(
           'Le sexe du personnage peut être soit homme (1) ou femme (2)');
     }
+    this.team = Team('My team');
   }
 }

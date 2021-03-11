@@ -18,14 +18,13 @@ class _CharacterPreviewState extends State<CharacterPreview> {
   bool _selected = false;
 
   Color _getColor() {
-    // if (character.autoSelected) {
-    //   return Colors.green[800];
-    // } else if (character.selected &&
-    //     character.autoSelected == false) {
-    //   return Colors.green[600];
-    // } else {
-    return (widget.visited) ? Colors.green[300] : Colors.red[400];
-    // }
+    if (widget.character.autoSelected) {
+      return Colors.grey[600];
+    } else if (widget.character.selected) {
+      return Colors.green[800];
+    } else {
+      return (widget.visited) ? Colors.green[300] : Colors.red[400];
+    }
   }
 
   // bool _getEnabled(){
