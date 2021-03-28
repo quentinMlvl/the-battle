@@ -4,6 +4,7 @@ import 'dart:math';
 
 class Team {
   final String uuid;
+  bool validated = false;
   String name = 'My team';
   List<Character> characters;
   static const int maxCharacterPerTeam = 5;
@@ -56,7 +57,6 @@ class Team {
 
       if (searchedIndex > -1 && !aCharacter.autoSelected) {
         this.characters.removeAt(searchedIndex);
-        aCharacter.selected = false;
         return true;
       }
     }
