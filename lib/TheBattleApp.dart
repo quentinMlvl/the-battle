@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:the_battle/models/Player.dart';
-import 'package:the_battle/models/Character.dart';
 import 'package:the_battle/pages/AllCharactersPage.dart';
 import 'package:the_battle/pages/TeamPage.dart';
 import 'package:the_battle/pages/TeamCustomPage.dart';
@@ -20,6 +19,12 @@ class _TheBattleAppState extends State<TheBattleApp> {
 
   final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
+  void _onValidateTeam() {
+    setState(() {
+      this._player.team.validated = true;
+    });
+  }
+
   Widget _checkRoute(context, String route) {
     if (_player.team.validated) {
       return TeamCustomPage();
@@ -33,6 +38,7 @@ class _TheBattleAppState extends State<TheBattleApp> {
         case '/team':
           return TeamPage(
             player: this._player,
+            onValidateTeam: _onValidateTeam,
           );
         default:
           return AllCharactersPage(
@@ -51,10 +57,6 @@ class _TheBattleAppState extends State<TheBattleApp> {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: AllCharactersPage(
-      //   title: 'THE BATTLE',
-      //   player: _player,
-      // ),
       routes: {
         AllCharactersPage.routeName: (context) =>
             _checkRoute(context, AllCharactersPage.routeName),

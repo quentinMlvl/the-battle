@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:the_battle/models/Character.dart';
 import 'package:the_battle/models/Player.dart';
+import 'package:the_battle/models/Team.dart';
 
 class CharacterDetails extends StatefulWidget {
   const CharacterDetails(
@@ -20,6 +21,45 @@ class _CharacterDetailsState extends State<CharacterDetails> {
     widget.onCharacterAdded(widget.character);
   }
 
+  Widget _addToTeam() {
+    if (widget.player.team.validated) {
+      return Container(
+          color: Colors.red,
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              "Équipe déjà validée !!",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+          ));
+    }
+    if (widget.player.team.characters.length == Team.maxCharacterPerTeam) {
+      return Container(
+          color: Colors.red,
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              "Équipe pleine !!",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+          ));
+    }
+    return RaisedButton(
+      onPressed: _onPressed,
+      color: Colors.green,
+      child: Text("Ajouter à l'équipe"),
+      textColor: Colors.white,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -36,7 +76,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
                       style: TextStyle(
                           fontFamily: 'Knewave',
                           fontSize: 20,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                     Image(
                       image: AssetImage(widget.character.imagePath()),
@@ -55,7 +95,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
                           style: TextStyle(
                               fontFamily: 'Knewave',
                               fontSize: 15,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -68,7 +108,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
                           style: TextStyle(
                               fontFamily: 'Knewave',
                               fontSize: 15,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -81,7 +121,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
                           style: TextStyle(
                               fontFamily: 'Knewave',
                               fontSize: 15,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -94,7 +134,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
                           style: TextStyle(
                               fontFamily: 'Knewave',
                               fontSize: 15,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                       ],
                     ),
@@ -104,10 +144,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RaisedButton(
-                    onPressed: _onPressed, child: Text("Ajouter à l'équipe"))
-              ],
+              children: [_addToTeam()],
             )
           ],
         ));

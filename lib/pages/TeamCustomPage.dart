@@ -14,8 +14,17 @@ class _TeamCustomPageState extends State<TeamCustomPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('ouiR'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Custom',
+          style: TextStyle(fontFamily: 'Knewave', fontSize: 50),
+        ),
+        centerTitle: true,
+      ),
+      body: Container(
+        child: Text('Customiser votre équipe'),
+      ),
     );
   }
 }

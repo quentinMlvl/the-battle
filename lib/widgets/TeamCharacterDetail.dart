@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:the_battle/models/Character.dart';
+import 'package:the_battle/models/Player.dart';
+
 
 class TeamCharacterDetail extends StatefulWidget {
-  TeamCharacterDetail({Key key, this.character}) : super(key: key);
+  TeamCharacterDetail({Key key, this.character, this.player, this.onDelete})
+      : super(key: key);
 
   final Character character;
+  final Player player;
+  final Function onDelete;
 
   @override
   _TeamCharacterDetailState createState() => _TeamCharacterDetailState();
@@ -19,7 +24,7 @@ class _TeamCharacterDetailState extends State<TeamCharacterDetail> {
   }
 
   Widget _getButton() {
-    if (widget.character.autoSelected) {
+    if (widget.character.autoSelected || widget.player.team.validated) {
       return Icon(Icons.lock);
     } else {
       return IconButton(icon: Icon(Icons.remove_circle), onPressed: _onPressed);
@@ -27,7 +32,7 @@ class _TeamCharacterDetailState extends State<TeamCharacterDetail> {
   }
 
   void _onPressed() {
-    print("suppr");
+    widget.onDelete(widget.character);
   }
 
   @override
@@ -41,7 +46,7 @@ class _TeamCharacterDetailState extends State<TeamCharacterDetail> {
           width: 200,
         ),
         title: Text(
-          widget.character.name + " " + widget.character.selected.toString(),
+          widget.character.name,
           style: TextStyle(
               fontFamily: 'Knewave', fontSize: 20, color: Colors.white),
         ),
